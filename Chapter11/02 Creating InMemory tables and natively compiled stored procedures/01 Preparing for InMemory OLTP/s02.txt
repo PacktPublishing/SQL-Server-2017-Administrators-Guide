@@ -1,0 +1,8 @@
+ALTER DATABASE [demo] 
+ADD FILE 
+( 
+  NAME = N'inmem_file', 
+  FILENAME = N'F:\DATA\inmem' 
+) 
+TO FILEGROUP [INMEM]
+GO

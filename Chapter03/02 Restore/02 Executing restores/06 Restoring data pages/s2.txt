@@ -1,0 +1,4 @@
+RESTORE DATABASE AdventureWorks 
+PAGE = '1:12345' 
+FROM DISK = 'L:\backups\aw.bak'
+WITH NORECOVERY

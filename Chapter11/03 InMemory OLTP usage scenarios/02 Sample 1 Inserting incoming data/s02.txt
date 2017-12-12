@@ -1,0 +1,11 @@
+create procedure procAddSensorData
+(
+  @sensorId uniqueidentifier
+  , @waterFlowRate dec(7, 2)
+)
+with native_compilation, schemabinding
+as
+begin atomic with (transaction isolation level = snapshot, language = 'English')
+insert dbo.SensorData (SensorId, WaterFlowRate) values (@sensorId, @waterFlowRate)
+end
+go

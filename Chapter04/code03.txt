@@ -1,0 +1,8 @@
+--to add a group run the command
+CREATE LOGIN [SQLSERVER\DBA Team] FROM WINDOWS
+
+--to add a single user run the command
+CREATE LOGIN [SQLSERVER\Marek] FROM WINDOWS
+
+CREATE LOGIN [Marek] WITH PASSWORD = 'P@ssw0rd'
+CREATE LOGIN [Marek] WITH PASSWORD='P@ssw0rd', CHECK_EXPIRATION=ON, CHECK_POLICY=ON

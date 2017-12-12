@@ -1,0 +1,2 @@
+declare @timeBefore date = getdate() - 1
+exec procMoveSensorData @timeBefore

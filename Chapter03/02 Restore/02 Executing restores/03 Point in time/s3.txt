@@ -1,0 +1,3 @@
+BEGIN TRAN 'my risky tran' WITH MARK
+-- do everything you need
+COMMIT

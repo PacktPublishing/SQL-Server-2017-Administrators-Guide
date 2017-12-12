@@ -1,0 +1,16 @@
+create procedure procUpdateSensorData
+(
+  @sensorId uniqueidentifier
+  , @waterFlowRate dec(7, 2)
+)
+with native_compilation, schemabinding
+as
+begin atomic with (transaction isolation level = snapshot, language = 'English')
+  update dbo.SensorData2 set
+    WaterFlowRate = @waterFlowRate
+    , RecordTime = default
+  where SensorId = @sensorId
+  if @@rowcount = 0
+    insert dbo.SensorData2 (SensorId, WaterFlowRate) values (@sensorId, @waterFlowRate)
+end
+go

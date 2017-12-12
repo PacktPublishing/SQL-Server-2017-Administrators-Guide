@@ -1,0 +1,27 @@
+create table SensorDataHistory
+(
+  Id bigint not null primary key
+, SensorId uniqueidentifier not null
+, RecordTime datetime2 not null
+, WaterFlowRate decimal(7, 2) not null
+) on [primary]
+go
+
+create proc procMoveSensorData
+  @recordsBefore datetime2
+as
+begin try
+  begin tran
+    insert SensorDataHistory (Id, SensorId, RecordTime, WaterFlowRate)
+    select Id, SensorId, RecordTime, WaterFlowRate
+    from SensorData
+    where RecordTime <= @recordsBefore
+
+    delete SensorData where RecordTime <= @recordsBefore
+  commit
+end try
+begin catch
+  rollback;
+  throw;
+end catch
+go

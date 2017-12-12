@@ -1,0 +1,21 @@
+-- rescue last user transactions
+BACKUP LOG Accounting TO DISK = 'L:\backups\taillog.bak'
+WITH NORECOVERY
+
+-- restore initial state of the database
+RESTORE DATABASE Accounting FROM DISK = 'L:\backups\accounting.bak'
+WITH NORECOVERY
+
+-- restore the most recent differential backup created before 5 p.m.
+RESTORE DATABASE Accounting FROM DISK = 'L:\backups\accounting.bak'
+WITH FILE = 21, NORECOVERY
+
+-- restore trans. log backups between the last diff. backup and failure point
+-- this statement is repeated with changing FILE option
+RESTORE LOG Accounting FROM DISK = 'L:\backups\accounting.bak'
+WITH FILE = 22, -- and 23, 24 and so on until 26
+NORECOVERY
+
+-- restore tail-log backup and recover the database
+RESTORE LOG Accounting FROM DISK = 'L:\backups\taillog.bak'
+WITH RECOVERY

@@ -1,0 +1,3 @@
+RESTORE LOG Accounting FROM DISK = 'L:\backups\somelog.bak'
+WITH
+STOPBEFOREMARK = 'my risky tran', RECOVERY

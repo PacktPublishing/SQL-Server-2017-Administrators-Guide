@@ -1,0 +1,1 @@
+ALTER TABLE some_table_without_clustered_index WITH REBUILD

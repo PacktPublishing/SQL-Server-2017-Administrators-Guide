@@ -1,0 +1,1 @@
+alter database <database name> set remote_data_archive = off

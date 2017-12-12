@@ -1,0 +1,2 @@
+BACKUP DATABASE <database name> TO DISK = '<path to backup file>'
+WITH DIFFERENTIAL

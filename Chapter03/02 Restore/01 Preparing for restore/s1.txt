@@ -1,0 +1,1 @@
+RESTORE VERIFYONLY FROM DISK = '<path to backup file>' WITH CHECKSUM

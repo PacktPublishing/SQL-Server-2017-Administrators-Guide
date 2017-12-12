@@ -1,0 +1,3 @@
+select SensorId, RecordTime, WaterFlowRate 
+from 
+SensorData2 for system_time between '2017-02-11 00:00' and '2017-02-11 01:00am'

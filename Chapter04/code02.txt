@@ -1,0 +1,11 @@
+#run this on the Domain Controller
+Import-Module ActiveDirectory
+New-ADServiceAccount -name SQLService -DNSHostName sql.contoso.com -PrincipalsAllowedToRetrieveManagedPassword sql.contoso.com
+
+
+#run this on the SQL Server
+Import-Module ActiveDirectory
+Install-ADServiceAccount -Identity SQLService 
+
+#test the account with
+Test-ADServiceAccount SQLService 

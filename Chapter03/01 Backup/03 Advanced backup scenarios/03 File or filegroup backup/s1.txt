@@ -1,0 +1,5 @@
+BACKUP DATABASE <database name> 
+FILEGROUP = <filegroup name>, FILEGROUP = <another filegroup name>
+TO DISK = '<file path>'
+WITH
+<additional options>

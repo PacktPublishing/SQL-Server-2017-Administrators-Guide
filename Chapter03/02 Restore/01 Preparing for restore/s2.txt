@@ -1,0 +1,1 @@
+RESTORE HEADERONLY FROM DISK = '<path to backup file>'

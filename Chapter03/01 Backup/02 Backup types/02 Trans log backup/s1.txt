@@ -1,0 +1,1 @@
+BACKUP LOG <database name> TO DISK = '<path to .bak file>' WITH <additional options>

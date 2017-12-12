@@ -1,0 +1,18 @@
+-- run once: set the ARCHIVE2016 filegroup as read-only
+ALTER DATABASE BiggerSystem MODIFY FILEGROUP ARCHIVE2016 READONLY
+
+-- first time backup after setting the filegroup read-only
+BACKUP DATABASE BiggerSystem 
+READ_WRITE_FILEGROUPS, FILEGROUP = 'ARCHIVE2016'
+TO DISK = 'L:\backups\bigsys.bak'
+WITH INIT, CHECKSUM, COMPRESSION
+
+-- transaction backups follow for the rest of day
+
+-- next daily backups
+BACKUP DATABASE BiggerSystem
+READ_WRITE_FILEGROUPS
+TO DISK = 'L:\backups\bigsysadd.bak'
+WITH INIT, CHECKSUM, COMPRESSION
+
+-- transaction backups follow

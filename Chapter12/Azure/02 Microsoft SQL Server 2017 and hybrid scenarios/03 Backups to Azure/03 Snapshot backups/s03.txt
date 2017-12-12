@@ -1,0 +1,5 @@
+restore database FilesInAzure from url = 'https://sqladminguidedb.blob.core.windows.net/sql/FilesInAzureFull.bak'
+with norecovery, replace    
+
+restore log FilesInAzure from url = 'https://sqladminguidedb.blob.core.windows.net/sql/FilesInAzureLog_201711082300.bak'
+with recovery, stopat = '2017-11-07 03:00pm'

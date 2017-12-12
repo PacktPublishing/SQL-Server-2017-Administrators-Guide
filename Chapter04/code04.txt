@@ -1,0 +1,14 @@
+SELECT serverproperty('machinename') as 'Server Name', [name], [is_policy_checked], is_expiration_checked] FROM master.sys.sql_logins 
+WHERE ( [is_policy_checked] = 0 OR [is_expiration_checked] = 0 ) and name not like '##MS_%'
+
+SELECT name,loginproperty([name], 'PasswordLastSetTime')
+FROM sys.sql_logins 
+WHERE loginproperty([name], 'PasswordLastSetTime') < DATEADD(month,-6,GETDATE())
+
+SELECT SERVERPROPERTY('machinename') AS 'Server Name', name AS 'Login With Password Same As Name' 
+FROM master.sys.sql_logins
+WHERE PWDCOMPARE(name,password_hash) = 1
+ORDER by name
+
+SELECT name FROM sys.sql_logins 
+WHERE PWDCOMPARE('', password_hash) = 1 ; 

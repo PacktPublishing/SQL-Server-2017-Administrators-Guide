@@ -1,0 +1,4 @@
+CREATE CREDENTIAL [WindowsAcct] WITH IDENTITY = N'DOMAIN\ServiceAcct', SECRET = N'P@ssw0rd'
+--you need to specify the password for the Windows account here as a plain text
+
+ALTER LOGIN [Marek] ADD CREDENTIAL [WindowsAcct]

@@ -1,0 +1,2 @@
+BACKUP DATABASE AdventureWorks TO DISK = 'D:\myBackups\tempBackupOfAdventureWorks.bak'
+WITH COPY_ONLY

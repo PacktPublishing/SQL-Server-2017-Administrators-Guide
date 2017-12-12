@@ -1,0 +1,5 @@
+BACKUP DATABASE <database name> TO
+DISK = '<path to first file>',
+DISK = '<path to second file>'
+WITH
+MEDIANAME = '<name of the media set>'

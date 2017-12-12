@@ -1,0 +1,12 @@
+create database FilesInAzure
+on
+(
+name = 'FilesInAzureData',
+filename = 'https://sqladminguidedb.blob.core.windows.net/sql/masterfile.mdf'
+)
+log on
+(
+name = 'FilesInAzureLog',
+filename = 'https://sqladminguidedb.blob.core.windows.net/sql/logfile.ldf'
+)
+go

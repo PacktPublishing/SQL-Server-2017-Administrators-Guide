@@ -1,0 +1,5 @@
+BACKUP DATABASE <database name> TO
+DISK = '<path to first file>'
+-- second file from previous example is not used
+WITH
+FORMAT

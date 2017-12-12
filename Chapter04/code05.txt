@@ -1,0 +1,4 @@
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [Marek] --for SQL Login type
+ALTER SERVER ROLE [sysadmin] ADD MEMBER [DOMAIN\Marek] --for Windows Login type, including the domain name
+
+ALTER SERVER ROLE [sysadmin] DROP MEMBER [Marek] --removes login Marek from sysadmin server role

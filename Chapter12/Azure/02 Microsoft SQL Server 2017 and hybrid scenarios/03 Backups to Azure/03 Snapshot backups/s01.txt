@@ -1,0 +1,2 @@
+backup database FilesInAzure to url = 'https://sqladminguidedb.blob.core.windows.net/bck/FilesInAzureFull.bak'
+with file_snapshot

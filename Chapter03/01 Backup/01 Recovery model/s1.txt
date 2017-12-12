@@ -1,0 +1,2 @@
+-- setting full recovery model
+ALTER DATABASE <database_name> SET RECOVERY FULL

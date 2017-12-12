@@ -1,0 +1,4 @@
+BACKUP DATABASE <database name> TO
+DISK = '<path to file>'
+MIRROR TO DISK = '<path to file>'
+WITH <additional options like CHECKSUM>

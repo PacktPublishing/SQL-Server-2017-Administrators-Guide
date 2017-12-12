@@ -1,0 +1,26 @@
+use [AdventureWorks]
+exec sp_replicationdboption @dbname = N'AdventureWorks', 
+    @optname = N'publish', 
+    @value = N'true'
+GO
+
+exec sp_addpublication @publication = N'AWorks - Test', 
+  @description = N'Snapshot publication of database ''AdventureWorks'' from Publisher ''SQL''.', 
+  @sync_method = N'native', 
+  @snapshot_in_defaultfolder = N'true',
+  @repl_freq = N'snapshot', 
+  @status = N'active', 
+  @independent_agent = N'true'
+GO
+
+exec sp_addpublication_snapshot @publication = N'AWorks - Employee', @frequency_type = 1
+
+use [AdventureWorks]
+exec sp_addarticle @publication = N'AWorks - Employee', 
+    @article = N'Employee', 
+    @source_owner = N'HumanResources', 
+    @source_object = N'Employee', 
+    @destination_table = N'Employee', 
+    @destination_owner = N'HumanResources',
+    @schema_option = 0x000000000803509D
+GO

@@ -1,0 +1,1 @@
+alter table SensorData2 add index cs_SensorData2 clustered columnstore 

@@ -1,0 +1,9 @@
+alter table SensorData2
+add 
+StartDate datetime2 generated always as row start,
+EndDate datetime2 generated always as row end,
+period for system_time (StartDate, EndDate)
+
+alter table SensorData2
+set
+(system_versioning = on (HISTORY_TABLE = dbo.SensorData2History))

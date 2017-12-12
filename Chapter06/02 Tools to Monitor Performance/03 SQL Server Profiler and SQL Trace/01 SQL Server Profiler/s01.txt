@@ -1,0 +1,1 @@
+sys.fn_trace_gettable('folder containing trace files', number of files)

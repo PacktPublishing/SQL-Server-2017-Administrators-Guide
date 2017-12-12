@@ -1,0 +1,27 @@
+-- try to save the latest user work
+BACKUP LOG Accounting to DISK = 'L:\backups\taillog.bak'
+WITH NORECOVERY, NO_TRUNCATE, CONTINUE_AFTER_ERROR
+
+-- let's check out backup ability
+RESTORE VERIFYONLY FROM DISK = 'L:\backups\accounting.bak' WITH CHECKSUM
+
+-- It's readable, what about content?
+RESTORE HEADERONLY FROM DISK = 'L:\backups\accounting.bak'
+
+-- now we have full backup on position 1
+-- and six following trans. log backups on positions 2 - 7
+
+-- restoring initial state of database
+-- note: the FILE position need not to be writen because 1 is the default
+RESTORE DATABASE Accounting FROM DISK = 'L:\backups\accounting.bak'
+WITH NORECOVERY
+
+-- restoring incremental states from backups 2 - 7
+RESTORE LOG Accounting FROM DISK = 'L:\backups\accounting.bak'
+WITH
+FILE = 2,   -- this value changes for every additional log backup
+NORECOVERY
+
+-- restoring the tail-log backup
+RESTORE LOG Accounting FROM DISK = 'L:\backups\taillog.bak'
+WITH RECOVERY  -- this option recovers the database and sets its state ONLINE

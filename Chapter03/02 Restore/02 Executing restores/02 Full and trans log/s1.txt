@@ -1,0 +1,2 @@
+BACKUP LOG <database name> TO DISK = '<path to tail log .bak file>'
+WITH NORECOVERY

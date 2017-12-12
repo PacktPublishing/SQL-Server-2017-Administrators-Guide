@@ -1,0 +1,4 @@
+declare @url nvarchar(255) = 'https://sqladminguidedb.blob.core.windows.net/bck/FilesInAzureLog_'
+set @url = @url + convert(sysdatetime, 'yyyyMMddhhmm') + '.bak'
+backup log FilesInAzure to url = @url
+with file_snapshot

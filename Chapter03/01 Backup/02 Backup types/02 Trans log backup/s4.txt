@@ -1,0 +1,3 @@
+BACKUP LOG AdventureWorks TO DISK = 'D:\backups\taillog.bak'
+WITH
+NORECOVERY, NO_TRUNCATE, CONTINUE_AFTER_ERROR

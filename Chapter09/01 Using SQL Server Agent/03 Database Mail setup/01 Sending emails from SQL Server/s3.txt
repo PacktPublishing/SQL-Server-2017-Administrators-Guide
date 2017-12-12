@@ -1,0 +1,2 @@
+declare @newestDate date = dateadd(week, -4, getdate())
+exec msdb..[sysmail_delete_mailitems_sp] @sent_before = @newestDate

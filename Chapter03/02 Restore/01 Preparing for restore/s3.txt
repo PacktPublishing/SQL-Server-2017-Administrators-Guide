@@ -1,0 +1,1 @@
+RESTORE FILELISTONLY FROM DISK = '<path to backup file>'

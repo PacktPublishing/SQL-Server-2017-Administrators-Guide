@@ -1,0 +1,4 @@
+exec msdb..sp_send_dbmail 
+  @recipients = 'administrator@example.com'
+  , @subject = 'Test'
+  , @body = 'Hello world'

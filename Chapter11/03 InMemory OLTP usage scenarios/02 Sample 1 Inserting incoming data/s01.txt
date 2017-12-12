@@ -1,0 +1,12 @@
+create table SensorData
+(
+Id bigint not null identity primary key nonclustered
+, SensorId uniqueidentifier not null
+, RecordTime datetime2 not null default(sysdatetime())
+, WaterFlowRate decimal(7, 2) not null
+)
+with
+(
+memory_optimized = on
+)
+go

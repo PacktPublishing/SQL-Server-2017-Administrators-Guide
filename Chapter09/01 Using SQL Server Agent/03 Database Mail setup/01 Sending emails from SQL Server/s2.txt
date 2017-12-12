@@ -1,0 +1,2 @@
+select * from msdb..sysmail_sentitems
+select * from msdb..sysmail_faileditems

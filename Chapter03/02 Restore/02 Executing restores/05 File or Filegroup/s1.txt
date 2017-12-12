@@ -1,0 +1,18 @@
+-- create tail-log backup
+BACKUP LOG BiggerSystem TO DISK = 'L:\backups\taillog.bak'
+
+-- restore the damaged filegroup
+RESTORE DATABASE BiggerSystem 
+FILEGROUP = 'OPERDATA' 
+FROM DISK = 'L:\backups\bigsysoper.bak'
+WITH NORECOVERY
+
+-- restore all trans. log backups from Tuesday 4 a.m. until most recent 
+RESTORE LOG BiggerSystem FROM DISK = 'L:\backups\bigsyslogs.bak'
+WITH
+FILE = x,   -- where "x" is the position of backup in backup file
+NORECOVERY
+
+-- recover the database
+RESTORE LOG BiggerSystem FROM DISK = 'L:\backups\taillog.bak'
+WITH RECOVERY

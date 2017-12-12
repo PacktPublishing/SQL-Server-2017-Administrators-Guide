@@ -1,0 +1,8 @@
+use master
+go
+
+create credential [https://sqladminguidedb.blob.core.windows.net/sql] 
+with 
+identity='SHARED ACCESS SIGNATURE', 
+secret = 'sv=2017-04-17&si=sql-15F986BEFBE&sr=c&sig=4d*********************3D'
+go

@@ -1,0 +1,14 @@
+select
+  cp.usecounts
+  , cp.size_in_bytes
+  , cp.objtype
+  , db_name(sqltext.dbid) as dbname
+  , sqltext.objectid
+  , s.name as schemaname
+  , o.name as objname
+  , sqltext.text
+from sys.dm_exec_cached_plans as cp
+  cross apply sys.dm_exec_sql_text(cp.plan_handle) as sqltext
+  left join sys.objects as o on o.object_id = sqltext.objectid
+  left join sys.schemas as s on s.schema_id = o.schema_id
+where sqltext.dbid = db_id('demo')

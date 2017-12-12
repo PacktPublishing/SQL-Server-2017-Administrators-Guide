@@ -1,0 +1,1 @@
+DmaCmd.exe /AssessmentName="MigrationAssessment" /AssessmentDatabases="Server=SQL;Initial Catalog=AdventureWorks2016;Integrated Security=true" /AssessmentEvaluateCompatibilityIssues /AssessmentOverwriteResult /AssessmentResultJson="C:\MigrationAssessments\AWReport.json"

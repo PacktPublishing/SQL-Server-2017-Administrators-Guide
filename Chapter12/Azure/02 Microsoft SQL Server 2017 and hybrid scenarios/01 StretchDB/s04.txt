@@ -1,0 +1,15 @@
+use demo
+go
+
+create function dbo.fn_StretchMovieRatings (@Rating int) 
+returns table
+with schemabindings 
+as 
+return select 1 as is_eligible whene @Rating <= 5 
+go
+
+alter table MovieRatings set
+(remote_data_archive = on
+(filter_predicate = dbo.fn_StretchMovieRatings(Rating),
+migration_state = outbound))
+go

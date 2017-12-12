@@ -1,0 +1,18 @@
+-- this statement will return result set with backups in the file
+-- as in previous example (remember that Wednesday = 3)
+RESTORE HEADERONLY FROM DISK = 'L:\backups\devdemo.bak'
+
+-- this statement will show LogicalName and physical location of each file 
+-- in the database
+-- for example LogicalName of .mdf file is "devdemo_Data"
+-- and LogicalName of .ldf file is "devdemo_Log"
+RESTORE FILELISTONLY FROM DISK = 'L:\backups\devdemo.bak'
+
+-- we need tu provide the value of desired backup to actual RESTORE statement
+-- and also we need to say where to place files
+RESTORE DATABASE DevDemo FROM DISK = 'L:\backups\devdemo.bak'
+WITH
+FILE = 3,
+MOVE 'devdemo_Data' TO 'E:\data\devdemo.mdf',
+MOVE 'devdemo_Log' TO 'L:\logs\devdemo.ldf',
+RECOVERY

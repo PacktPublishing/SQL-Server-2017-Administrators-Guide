@@ -1,0 +1,18 @@
+-- 1. we have to ensure if the database is in FULL recovery model
+--    this statement will be run once only
+--    if database is in FULL recovery model already, nothing happens
+ALTER DATABASE AdventureWorks SET RECOVERY FULL
+GO
+
+-- 2. every day, for example at 3 a.m. we will run full backup
+--    following statement will reset content of the backup file
+BACKUP DATABASE AdventureWorks TO DISK = 'D:\backups\AdventureWorks.bak'
+WITH INIT
+GO
+
+-- 3. every hour or more often we will repeat the transaction log backup
+--    following statement will apend the backup to the backup file and clears 
+--    transaction log 
+BACKUP LOG AdventureWorks TO DISK = 'D:\backups\AdventureWorks.bak'
+WITH NOINIT
+GO

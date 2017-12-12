@@ -1,0 +1,1 @@
+sp_configure 'Database Mail XPs', 1

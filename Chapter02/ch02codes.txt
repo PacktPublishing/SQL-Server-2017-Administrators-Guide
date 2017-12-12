@@ -1,0 +1,33 @@
+SELECT * FROM sys.dm_exec_requests er
+JOIN sys.dm_exec_sessions es
+ON er.session_id = es.session_id
+-- remove all system sessions and yourself
+WHERE es.session_id > 50 and es.session_id != @@SPID
+
+-----------------
+
+New-NetFirewallRule -DisplayName “SQL Server Connection” –Protocol TCP -Direction Inbound –LocalPort 1433 -Action allow
+New-NetFirewallRule -DisplayName “SQL Server DAC Connection” –Protocol TCP -Direction Inbound –LocalPort 1434 -Action allow
+New-NetFirewallRule -DisplayName “SQL Server Browser Service” –Protocol UDP -Direction Inbound –LocalPort 1434 -Action allow
+
+-----------------
+
+USE master
+GO
+EXEC sp_configure 'backup compression default',1
+GO
+RECONFIGURE
+GO
+
+-----------------
+
+sp_configure 'max server memory',245760
+
+-----------------
+
+sp_configure 'remote admin connections',1
+GO
+RECONFIGURE
+
+-----------------
+

@@ -1,0 +1,6 @@
+-- list of potentially corrupted data pages
+-- result will be for example AdventureWorks, 1, 12345
+SELECT DB_NAME(database_id) AS databaseName
+, file_id
+, page_id
+FROM msdb..suspect_pages

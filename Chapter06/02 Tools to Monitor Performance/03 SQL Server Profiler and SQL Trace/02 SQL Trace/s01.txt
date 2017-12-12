@@ -1,0 +1,45 @@
+-- Create a Queue
+declare @rc int
+declare @TraceID int
+declare @maxfilesize bigint
+set @maxfilesize = 5
+
+-- Please replace the text InsertFileNameHere, with an appropriate
+-- ... the description continues
+
+exec @rc = sp_trace_create @TraceID output, 0, N'InsertFileNameHere', @maxfilesize, NULL 
+if (@rc != 0) goto error
+
+-- Client side File and Table cannot be scripted
+
+-- Set the events
+declare @on bit
+set @on = 1
+exec sp_trace_setevent @TraceID, 24, 1, @on
+exec sp_trace_setevent @TraceID, 24, 9, @on
+exec sp_trace_setevent @TraceID, 24, 2, @on
+
+-- ... many sp_trace_setevent procedure calls were erased here
+
+exec sp_trace_setevent @TraceID, 40, 61, @on
+exec sp_trace_setevent @TraceID, 40, 64, @on
+exec sp_trace_setevent @TraceID, 40, 66, @on
+
+
+-- Set the Filters
+declare @intfilter int
+declare @bigintfilter bigint
+
+exec sp_trace_setfilter @TraceID, 35, 0, 6, N'demo'
+-- Set the trace status to start
+exec sp_trace_setstatus @TraceID, 1
+
+-- display trace id for future references
+select TraceID=@TraceID
+goto finish
+
+error: 
+select ErrorCode=@rc
+
+finish: 
+go

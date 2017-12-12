@@ -1,0 +1,6 @@
+use master
+go
+exec sp_configure 'remote data archive', 1
+go
+reconfigure
+go

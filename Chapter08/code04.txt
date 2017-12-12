@@ -1,0 +1,1 @@
+rskeymgmt -e -f c:\backup\ssrskey.snk -p P@ssw0rd

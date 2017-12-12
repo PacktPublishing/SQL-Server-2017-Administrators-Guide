@@ -1,0 +1,1 @@
+select distinct object_name, counter_name from sys.dm_os_performance_counters

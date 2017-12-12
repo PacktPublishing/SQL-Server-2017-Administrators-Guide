@@ -1,0 +1,2 @@
+BACKUP DATABASE AdventureWorks TO DISK = 'D:\myBackups\AdventureWorks.bak'
+WITH NOINIT, COMPRESSION

@@ -1,0 +1,9 @@
+-- bringing data back
+alter table MovieRatings set (remote_data_archive (migration_state = inbound))
+go
+
+-- leaving data in Azure
+alter table MovieRatings set 
+(remote_data_archive = off_without_data_recovery 
+(migration_state = paused))
+go

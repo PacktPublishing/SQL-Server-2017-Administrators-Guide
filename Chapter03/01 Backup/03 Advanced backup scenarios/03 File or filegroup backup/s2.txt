@@ -1,0 +1,28 @@
+-- monday 3 a. m.
+BACKUP DATABASE BiggerSystem
+FILEGROUP = 'PRIMARY'
+TO DISK = 'L:\backups\bigsysprimary.bak'
+WITH INIT, CHECKSUM, COMPRESSION
+-- monday every hour
+BACKUP LOG BiggerSystem TO DISK = 'L:\backups\bigsyslogs.bak'
+WITH NOINIT, CHECKSUM, COMPRESSION
+
+-- tuesday 3 a. m.
+BACKUP DATABASE BiggerSystem
+FILEGROUP = 'OPERDATA'
+TO DISK = 'L:\backups\bigsysoper.bak'
+WITH INIT, CHECKSUM, COMPRESSION
+-- tuesday every hour
+BACKUP LOG BiggerSystem TO DISK = 'L:\backups\bigsyslogs.bak'
+WITH NOINIT, CHECKSUM, COMPRESSION
+
+-- wednesday 3 a. m.
+BACKUP DATABASR BiggerSystem
+FILEGROUP = 'ARCHIVE2016'
+TO DISK = 'L:\backups\bigsysarch2016.bak'
+WITH INIT, CHECKSUM, COMPRESSION
+-- wednesday every hour
+BACKUP LOG BiggerSystem TO DISK = 'L:\backups\bigsyslogs.bak'
+WITH NOINIT, CHECKSUM, COMPRESSION
+
+-- and so on, thursday we start to backup the PRIMARY filegroup again

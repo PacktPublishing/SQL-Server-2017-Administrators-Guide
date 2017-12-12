@@ -1,0 +1,2 @@
+alter table MovieRatings set (remote_data_archive = on (migration_state = paused))
+go

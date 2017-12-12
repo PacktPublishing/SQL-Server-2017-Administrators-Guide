@@ -1,0 +1,6 @@
+SELECT * FROM sys.fn_builtin_permissions('') where class_desc = 'SERVER'
+
+
+GRANT VIEW SERVER STATE TO [Marek]
+REVOKE VIEW SERVER STATE TO [Marek] AS [sa]
+DENY VIEW SERVER STATE TO [Marek] 

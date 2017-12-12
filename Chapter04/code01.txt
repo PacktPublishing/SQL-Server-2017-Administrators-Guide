@@ -1,0 +1,9 @@
+#run this on the Domain Controller
+Import-Module ActiveDirectory
+New-ADServiceAccount -Name SQLService -Enabled $true
+Add-ADComputerServiceAccount -Identity SQL -ServiceAccount SQLService 
+#SQL will be the host here, SQLService is the name of the MSA account
+
+#run this on the SQL Server
+Import-Module ActiveDirectory
+Install-ADServiceAccount -Identity SQLService 

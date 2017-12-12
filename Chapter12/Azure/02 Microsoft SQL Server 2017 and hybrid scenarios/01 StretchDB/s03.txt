@@ -1,0 +1,8 @@
+use master
+go
+alter database <database name> set remote_data_archive = on 
+( 
+    server = 'tcp:<your logical SQL Server name>.database.windows.net,1433',
+    credential = <credential name>
+)
+go

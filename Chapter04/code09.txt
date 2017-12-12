@@ -1,0 +1,19 @@
+USE master; 
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Pa$$w0rdF0rM4$t3R'; 
+CREATE CERTIFICATE MyServerCert WITH SUBJECT = 'DEK Certificate'; 
+
+USE AdventureWorks 
+CREATE DATABASE ENCRYPTION KEY WITH ALGORITHM = AES_128 ENCRYPTION BY SERVER CERTIFICATE MyServerCert; 
+ALTER DATABASE AdventureWorks SET ENCRYPTION ON; 
+
+SELECT database_id, encryption_state, key_algorithm, key_length, percent_complete
+FROM sys.dm_database_encryption_keys
+
+USE master
+BACKUP CERTIFICATE MyServerCert TO FILE = 'C:\Certificate\MyServerCert.cer'
+WITH PRIVATE KEY (FILE = 'C:\Certificate\MyServerCert.pfx', ENCRYPTION BY PASSWORD = 'Str0ngP@ssw0rd')
+
+
+USE master
+CREATE CERTIFICATE MyServerCert FROM FILE = 'C:\Certificate\MyServerCert.cer'
+WITH PRIVATE KEY (FILE = 'C:\Certificate\MyServerCert.pfx', DECRYPTION BY PASSWORD = 'Str0ngP@ssw0rd')

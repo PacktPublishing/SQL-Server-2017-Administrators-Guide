@@ -1,0 +1,1 @@
+BACKUP LOG AdventureWorks TO DISK = 'D:\backups\tailLog.bak' WITH NORECOVERY

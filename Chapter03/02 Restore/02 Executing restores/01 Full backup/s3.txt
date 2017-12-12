@@ -1,0 +1,10 @@
+-- this statement will return result set with backups in the file
+-- our backup will have value 3 in column Position (Monday's backup will be 1, 
+-- Tuesday's backup will be 2, our corruption occured at Wednesday)
+RESTORE HEADERONLY FROM DISK = 'L:\backups\devdemo.bak'
+
+-- we need tu provide the value of desired backup to actual RESTORE statement
+RESTORE DATABASE DevDemo FROM DISK = 'L:\backups\devdemo.bak'
+WITH
+FILE = 3,
+RECOVERY

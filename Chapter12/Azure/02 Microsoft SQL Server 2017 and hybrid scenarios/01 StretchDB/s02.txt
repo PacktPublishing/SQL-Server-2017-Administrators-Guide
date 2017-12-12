@@ -1,0 +1,7 @@
+use <database name>
+go
+create master key encryption by password = '<$0me $tr0ng pa$$w0rd>'
+go
+create database scoped credential <credential name>
+with identity = '<identity>' , secret = '<secret>'
+go
